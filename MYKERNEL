@@ -1,0 +1,87 @@
+#
+# $FreeBSD 13.1$
+
+## load minimal and nodebug template
+##
+include		MINIMAL
+include		../../conf/std.nodebug
+ident		CHROVEX
+
+## thoroughly turn off debug option, based on 
+## https://docs.freebsd.org/en/books/developers-handbook/kerneldebug/#kerneldebug-options
+##
+nooptions	KDB
+nooptions	KDB_UNATTENDED
+nooptions 	KDB_TRACE
+nooptions	DDB
+nooptions	GDB
+nooptions	BREAK_TO_DEBUGGER
+nooptions	INVARIANTS
+nooptions	INVARIANT_SUPPORT
+nooptions	WITNESS
+nooptions	WITNESS_SKIPSPIN
+nooptions	WITNESS_KDB
+nooptions	SOCKBUF_DEBUG
+nooptions	DEBUG_VFS_LOCKS
+nooptions	DEBUG_MEMGUARD
+nooptions	DIAGNOSTIC
+nooptions	KASAN
+nooptions	KMSAN
+
+## some modification on minimal template
+##
+nomakeoptions	DEBUG			# Build kernel with gdb(1) debug symbols
+nomakeoptions	WITH_CTF		# Run ctfconvert(1) for DTrace support
+
+nooptions 	NUMA			# Non-Uniform Memory Architecture support
+nooptions 	INET6			# IPv6 communications protocols
+nooptions 	COMPAT_FREEBSD32	# Compatible with i386 binaries
+nooptions 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
+nooptions 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
+nooptions 	COMPAT_FREEBSD6		# Compatible with FreeBSD6
+nooptions 	COMPAT_FREEBSD7		# Compatible with FreeBSD7
+nooptions 	COMPAT_FREEBSD9		# Compatible with FreeBSD9
+nooptions 	COMPAT_FREEBSD10	# Compatible with FreeBSD10
+nooptions 	COMPAT_FREEBSD11	# Compatible with FreeBSD11 ## should change this next release
+nooptions 	SCSI_DELAY		# Delay (in ms) before probing SCSI
+options 	MSDOSFS			# MSDOS Filesystem
+options 	CD9660			# ISO 9660 Filesystem
+options 	PROCFS			# Process filesystem (requires PSEUDOFS)
+options 	PSEUDOFS		# Pseudo-filesystem framework
+options 	TMPFS			# Efficient memory filesystem
+options 	EFIRT			# EFI Runtime Services support ## required by smbios
+
+options 	COMPAT_LINUXKPI
+
+device		smbios
+
+device		ahci			# AHCI-compatible SATA controllers
+device		ata			# Legacy ATA/SATA controllers
+
+device		scbus			# SCSI bus (required for ATA/SCSI)
+device		da			# Direct Access (disks) ## required by umass
+device		cd			# CD
+device		pass			# Passthrough device (direct ATA/SCSI access)
+
+device		crypto			# core crypto support
+device		md			# Memory "disks"
+device		firmware		# firmware assist module
+
+device		uhci			# UHCI PCI->USB interface
+device		ehci			# EHCI PCI->USB interface (USB 2.0)
+device		usb			# USB Bus (required)
+device		ukbd			# Keyboard
+device		umass			# Disks/Mass storage - Requires scbus and da
+
+device		sound			# Generic sound driver (required)
+device		snd_hda			# Intel High Definition Audio
+device		snd_ich			# Intel, NVidia and other ICH AC'97 Audio
+
+device		virtio			# Generic VirtIO bus (required)
+device		virtio_pci		# VirtIO PCI device
+device		vtnet			# VirtIO Ethernet device
+device		virtio_blk		# VirtIO Block device
+device		virtio_scsi		# VirtIO SCSI device
+device		virtio_balloon		# VirtIO Memory Balloon device
+
+device		hid			# Generic HID support ## required by ukbd
