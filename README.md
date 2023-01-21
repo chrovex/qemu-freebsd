@@ -1,2 +1,2 @@
-# qemu-freebsd
-How to install FreeBSD with X smoothly on QEMU
+# How to install FreeBSD with X smoothly on QEMU
+Under constrcution
