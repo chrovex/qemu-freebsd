@@ -35,7 +35,6 @@ nomakeoptions	WITH_CTF		# Run ctfconvert(1) for DTrace support
 
 nooptions 	NUMA			# Non-Uniform Memory Architecture support
 nooptions 	INET6			# IPv6 communications protocols
-nooptions 	COMPAT_FREEBSD32	# Compatible with i386 binaries
 nooptions 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
 nooptions 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
 nooptions 	COMPAT_FREEBSD6		# Compatible with FreeBSD6
@@ -43,7 +42,6 @@ nooptions 	COMPAT_FREEBSD7		# Compatible with FreeBSD7
 nooptions 	COMPAT_FREEBSD9		# Compatible with FreeBSD9
 nooptions 	COMPAT_FREEBSD10	# Compatible with FreeBSD10
 nooptions 	COMPAT_FREEBSD11	# Compatible with FreeBSD11 ## should change this next release
-nooptions 	SCSI_DELAY		# Delay (in ms) before probing SCSI
 options 	MSDOSFS			# MSDOS Filesystem
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
